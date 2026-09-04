@@ -321,6 +321,126 @@ button[data-testid="stPopoverButton"] {
     cursor: pointer !important;
 }
 
+/* Hilangkan gap dari slot aksi agar Login/Logout sejajar dengan menu lain. */
+@media (min-width: 1000px) {
+    .st-key-sista_sticky_header
+    > [data-testid="stLayoutWrapper"]
+    > [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(3),
+    .st-key-sista_sticky_header
+    > [data-testid="stLayoutWrapper"]
+    > [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(3)
+    > [data-testid="stVerticalBlock"] {
+        height: 88px !important;
+        min-height: 88px !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        gap: 0 !important;
+        align-self: center !important;
+        justify-content: center !important;
+    }
+}
+
+/*
+   Enam menu utama dan tombol Login/Logout memakai ukuran yang sama.
+   Laptop memakai lebar 100 px, sedangkan desktop lebar memakai 132 px.
+   Area hitbox setinggi 88 px tetap dipertahankan.
+*/
+@media (min-width: 1000px) {
+    .st-key-sista_sticky_header {
+        --sista-nav-control-width: 100px;
+        --sista-nav-menu-width: 620px;
+    }
+
+    .st-key-sista_sticky_header
+    > [data-testid="stLayoutWrapper"]
+    > [data-testid="stHorizontalBlock"] {
+        display: grid !important;
+        grid-template-columns:
+            minmax(0, 1fr)
+            var(--sista-nav-menu-width)
+            var(--sista-nav-control-width) !important;
+        align-items: center !important;
+        gap: 16px !important;
+    }
+
+    .st-key-sista_sticky_header
+    > [data-testid="stLayoutWrapper"]
+    > [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"] {
+        width: auto !important;
+        min-width: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        flex: none !important;
+    }
+
+    .st-key-sista_sticky_header
+    > [data-testid="stLayoutWrapper"]
+    > [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(2)
+    [data-testid="stHorizontalBlock"] {
+        display: grid !important;
+        grid-template-columns:
+            repeat(6, var(--sista-nav-control-width)) !important;
+        align-items: center !important;
+        gap: 4px !important;
+        width: var(--sista-nav-menu-width) !important;
+    }
+
+    .st-key-sista_sticky_header
+    > [data-testid="stLayoutWrapper"]
+    > [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(2)
+    [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"] {
+        width: var(--sista-nav-control-width) !important;
+        min-width: var(--sista-nav-control-width) !important;
+        height: 88px !important;
+        margin: 0 !important;
+        flex: none !important;
+    }
+
+    .st-key-sista_sticky_header
+    > [data-testid="stLayoutWrapper"]
+    > [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(2)
+    [data-testid="stElementContainer"],
+    .st-key-sista_sticky_header
+    > [data-testid="stLayoutWrapper"]
+    > [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(2)
+    [data-testid="stPageLink"],
+    .st-key-sista_sticky_header
+    > [data-testid="stLayoutWrapper"]
+    > [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(2)
+    [data-testid="stPopover"],
+    .st-key-sista_sticky_header a[data-testid="stPageLink-NavLink"],
+    .st-key-sista_sticky_header button[data-testid="stPopoverButton"],
+    .st-key-header_login_button,
+    .st-key-header_logout,
+    .st-key-header_login_button button,
+    .st-key-header_logout button {
+        width: var(--sista-nav-control-width) !important;
+        min-width: var(--sista-nav-control-width) !important;
+        max-width: var(--sista-nav-control-width) !important;
+        height: 88px !important;
+        min-height: 88px !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        box-sizing: border-box !important;
+    }
+}
+
+@media (min-width: 1280px) {
+    .st-key-sista_sticky_header {
+        --sista-nav-control-width: 132px;
+        --sista-nav-menu-width: 812px;
+    }
+}
+
 /* ============================================================
    ELEMEN DEKORATIF
    ============================================================ */
@@ -534,7 +654,7 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
 /* ============================================================
    TABLET & SMARTPHONE: HEADER DUA BARIS
    ============================================================ */
-@media (max-width: 900px) {
+@media (max-width: 999px) {
     .st-key-sista_sticky_header {
         padding: 10px 16px 12px !important;
     }
