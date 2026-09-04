@@ -87,18 +87,32 @@ header[data-testid="stHeader"] > div {
     top: 0 !important;
     left: 0 !important;
     right: 0 !important;
+    bottom: auto !important;
     width: 100vw !important;
     max-width: 100vw !important;
+    height: auto !important;
+    min-height: 0 !important;
     margin: 0 !important;
     box-sizing: border-box !important;
-    z-index: 99999 !important;
-    isolation: isolate;
-    pointer-events: none !important;
+    z-index: 1000 !important;
+    overflow: visible !important;
+    pointer-events: auto !important;
     background-color: #0067b9 !important;
     padding: 15px 40px 25px 40px !important;
 }
 
-/* Area kosong header tidak menutup konten, kontrolnya tetap dapat diklik. */
+/*
+   Jangan menonaktifkan pointer-events pada induk navbar. Streamlit dapat
+   mengubah pembungkus DOM antarrilis dan browser; menonaktifkan induknya
+   membuat sebagian kontrol turunannya tidak menerima klik di deployment.
+*/
+.st-key-sista_sticky_header
+> [data-testid="stLayoutWrapper"] {
+    width: 100% !important;
+    height: auto !important;
+    pointer-events: auto !important;
+}
+
 .st-key-sista_sticky_header a[href],
 .st-key-sista_sticky_header button:not(:disabled),
 .st-key-sista_sticky_header input,
@@ -152,12 +166,18 @@ header[data-testid="stHeader"] > div {
     border-radius: 7px !important;
     box-shadow: none !important;
     padding: 9px 10px !important;
-    min-height: 38px !important;
+    width: 100% !important;
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     font-size: 13px !important;
     font-weight: 600 !important;
     white-space: nowrap !important;
     transition: all 0.15s ease;
     position: relative;
+    z-index: 1;
+    cursor: pointer !important;
 }
 
 .st-key-sista_sticky_header a[data-testid="stPageLink-NavLink"] * {
@@ -188,23 +208,30 @@ header[data-testid="stHeader"] > div {
 /* ============================================================
    SEMUA POPOVER LAINNYA (Termasuk Statistik Sosial) -> TRANSPARAN
    ============================================================ */
-.st-key-sista_sticky_header div[data-testid="stPopover"] > button {
+.st-key-sista_sticky_header button[data-testid="stPopoverButton"] {
     background: transparent !important;
     color: #ffffff !important;
     border: none !important;
     box-shadow: none !important;
     border-radius: 7px !important;
-    min-height: 38px !important;
+    width: 100% !important;
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     padding: 9px 10px !important;
     font-size: 13px !important;
     font-weight: 600 !important;
+    position: relative !important;
+    z-index: 1;
+    cursor: pointer !important;
 }
 
-.st-key-sista_sticky_header div[data-testid="stPopover"] > button * {
+.st-key-sista_sticky_header button[data-testid="stPopoverButton"] * {
     color: #ffffff !important;
 }
 
-.st-key-sista_sticky_header div[data-testid="stPopover"] > button:hover {
+.st-key-sista_sticky_header button[data-testid="stPopoverButton"]:hover {
     background-color: rgba(255, 255, 255, 0.12) !important;
 }
 
@@ -267,9 +294,12 @@ button[data-testid="stPopoverButton"] {
     border-radius: 8px !important;
     font-size: 13px !important;
     font-weight: 700 !important;
-    min-height: 38px !important;
+    min-height: 44px !important;
     padding: 5px 12px !important;
     box-shadow: none !important;
+    position: relative !important;
+    z-index: 1;
+    cursor: pointer !important;
 }
 
 .st-key-sista_sticky_header button[kind="primary"] * {
@@ -282,6 +312,15 @@ button[data-testid="stPopoverButton"] {
     border-color: #edf5fc !important;
 }
 
+.st-key-header_login_button button,
+.st-key-header_logout button {
+    width: 100% !important;
+    min-height: 44px !important;
+    position: relative !important;
+    z-index: 1;
+    cursor: pointer !important;
+}
+
 /* ============================================================
    ELEMEN DEKORATIF
    ============================================================ */
@@ -292,6 +331,7 @@ button[data-testid="stPopoverButton"] {
     opacity: 0.35;
     margin-top: 10px;
     margin-bottom: 35px;
+    pointer-events: none;
 }
 
 /* ============================================================
@@ -483,7 +523,7 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
     .bps-province { font-size: 10px; }
     
     .st-key-sista_sticky_header a[data-testid="stPageLink-NavLink"],
-    .st-key-sista_sticky_header div[data-testid="stPopover"] > button,
+    .st-key-sista_sticky_header button[data-testid="stPopoverButton"],
     .st-key-sista_sticky_header button[kind="primary"] {
         font-size: 11px !important;
         padding: 8px 6px !important;
@@ -604,9 +644,9 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
     }
 
     .st-key-sista_sticky_header a[data-testid="stPageLink-NavLink"],
-    .st-key-sista_sticky_header div[data-testid="stPopover"] > button,
+    .st-key-sista_sticky_header button[data-testid="stPopoverButton"],
     .st-key-sista_sticky_header button[kind="primary"] {
-        min-height: 38px !important;
+        min-height: 44px !important;
         white-space: nowrap !important;
     }
 
@@ -669,34 +709,38 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
         flex-wrap: nowrap !important;
         align-items: center !important;
         gap: 8px !important;
-        width: 88px !important;
-        min-width: 88px !important;
+        width: 96px !important;
+        min-width: 96px !important;
     }
 
     .st-key-mobile_search_button,
     .st-key-mobile_menu_open {
         display: block !important;
-        width: 40px !important;
-        min-width: 40px !important;
+        width: 44px !important;
+        min-width: 44px !important;
+        min-height: 44px !important;
+        position: relative !important;
+        z-index: 1;
     }
 
     .st-key-mobile_search_button > button,
-    .st-key-mobile_search_button div[data-testid="stPopover"] > button,
     .st-key-mobile_search_button button[data-testid="stPopoverButton"],
     .st-key-mobile_menu_open button {
-        width: 40px !important;
-        min-width: 40px !important;
-        min-height: 40px !important;
+        width: 44px !important;
+        min-width: 44px !important;
+        min-height: 44px !important;
         padding: 0 !important;
         color: #ffffff !important;
         background: transparent !important;
         border: 1px solid rgba(255, 255, 255, 0.45) !important;
         border-radius: 8px !important;
         box-shadow: none !important;
+        position: relative !important;
+        z-index: 2;
+        cursor: pointer !important;
     }
 
     .st-key-mobile_search_button > button:hover,
-    .st-key-mobile_search_button div[data-testid="stPopover"] > button:hover,
     .st-key-mobile_search_button button[data-testid="stPopoverButton"]:hover,
     .st-key-mobile_menu_open button:hover {
         background: rgba(255, 255, 255, 0.12) !important;
@@ -704,14 +748,12 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
     }
 
     .st-key-mobile_search_button > button p,
-    .st-key-mobile_search_button div[data-testid="stPopover"] > button p,
     .st-key-mobile_search_button button[data-testid="stPopoverButton"] p,
     .st-key-mobile_menu_open button p {
         display: none !important;
     }
 
     .st-key-mobile_search_button > button *,
-    .st-key-mobile_search_button div[data-testid="stPopover"] > button *,
     .st-key-mobile_search_button button[data-testid="stPopoverButton"] *,
     .st-key-mobile_menu_open button * {
         color: #ffffff !important;
@@ -731,7 +773,7 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
         height: 100dvh !important;
         margin: 0 !important;
         padding: 0 !important;
-        z-index: 1000000 !important;
+        z-index: 2000 !important;
         overflow: hidden !important;
         pointer-events: auto !important;
         background: rgba(11, 20, 30, 0.58) !important;
@@ -805,9 +847,9 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
     > [data-testid="stLayoutWrapper"]
     > [data-testid="stHorizontalBlock"]
     > [data-testid="stColumn"]:last-child {
-        width: 40px !important;
-        min-width: 40px !important;
-        flex: 0 0 40px !important;
+        width: 44px !important;
+        min-width: 44px !important;
+        flex: 0 0 44px !important;
     }
 
     .mobile-drawer-brand-name {
@@ -825,14 +867,17 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
     }
 
     .st-key-mobile_menu_close button {
-        width: 40px !important;
-        min-width: 40px !important;
-        min-height: 40px !important;
+        width: 44px !important;
+        min-width: 44px !important;
+        min-height: 44px !important;
         padding: 0 !important;
         color: #17365d !important;
         background: transparent !important;
         border: none !important;
         box-shadow: none !important;
+        position: relative !important;
+        z-index: 2;
+        cursor: pointer !important;
     }
 
     .st-key-mobile_menu_close button:hover {
@@ -862,7 +907,9 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
     }
 
     .st-key-mobile_stats_dropdown [data-testid="stExpander"] {
-        overflow: hidden !important;
+        height: auto !important;
+        min-height: 48px !important;
+        overflow: visible !important;
         background: transparent !important;
         border: none !important;
         border-radius: 8px !important;
@@ -870,13 +917,30 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
     }
 
     .st-key-mobile_stats_dropdown details > summary {
-        min-height: 42px !important;
+        min-height: 48px !important;
         padding: 8px 10px !important;
         color: #17365d !important;
         background: transparent !important;
         border-radius: 8px !important;
         font-size: 14px !important;
         font-weight: 600 !important;
+        position: relative !important;
+        z-index: 1;
+        cursor: pointer !important;
+    }
+
+    /*
+       Detail expander harus ikut memperbesar tinggi layout drawer. Tanpa
+       aturan ini, footer wilayah menumpuk di atas item Statistik Sosial dan
+       mengambil alih sentuhan pada perangkat mobile.
+    */
+    .st-key-mobile_stats_dropdown details,
+    .st-key-mobile_stats_dropdown details[open],
+    .st-key-mobile_stats_dropdown [data-testid="stExpanderDetails"] {
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+        position: static !important;
     }
 
     .st-key-mobile_stats_dropdown details > summary:hover {
@@ -912,7 +976,7 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
 
     [class*="st-key-mobile_nav_item_"] button {
         width: 100% !important;
-        min-height: 42px !important;
+        min-height: 48px !important;
         justify-content: flex-start !important;
         gap: 10px !important;
         padding: 8px 10px !important;
@@ -924,6 +988,9 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
         font-size: 14px !important;
         font-weight: 600 !important;
         text-align: left !important;
+        position: relative !important;
+        z-index: 1;
+        cursor: pointer !important;
     }
 
     [class*="st-key-mobile_nav_item_"] button::after {
@@ -961,7 +1028,7 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
     }
 
     .st-key-mobile_header_wilayah [data-baseweb="select"] > div {
-        min-height: 40px !important;
+        min-height: 44px !important;
         color: #17365d !important;
         background: #ffffff !important;
         border-color: #d5e3f1 !important;
@@ -979,7 +1046,7 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
     .st-key-mobile_admin_login button,
     .st-key-mobile_admin_logout button {
         width: 100% !important;
-        min-height: 42px !important;
+        min-height: 48px !important;
         color: #ffffff !important;
         background: #0067b9 !important;
         border: 1px solid #0067b9 !important;
@@ -1043,7 +1110,7 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
     }
 
     .st-key-sista_sticky_header a[data-testid="stPageLink-NavLink"],
-    .st-key-sista_sticky_header div[data-testid="stPopover"] > button,
+    .st-key-sista_sticky_header button[data-testid="stPopoverButton"],
     .st-key-sista_sticky_header button[kind="primary"] {
         font-size: 11px !important;
         padding: 7px 8px !important;
