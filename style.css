@@ -256,46 +256,20 @@ button[data-testid="stPopoverButton"] {
     border-color: transparent !important;
 }
 
-/* ============================================================
-   KHUSUS TOMBOL PENCARIAN & LOKASI -> KOTAK PUTIH
-   (Memanggil langsung key unik dari Python)
-   ============================================================ */
-.st-key-btn_pencarian button,
-.st-key-btn_lokasi button {
-    background-color: #ffffff !important;
-    color: #0067b9 !important;
-    border: 1px solid #ffffff !important;
-    border-radius: 8px !important;
-    min-height: 38px !important;
-    padding: 5px 12px !important;
-    box-shadow: none !important;
-    font-size: 13px !important;
-    font-weight: 700 !important;
-}
-
-.st-key-btn_pencarian button *,
-.st-key-btn_lokasi button * {
-    color: #0067b9 !important;
-}
-
-.st-key-btn_pencarian button:hover,
-.st-key-btn_lokasi button:hover {
-    background-color: #edf5fc !important;
-    border-color: #edf5fc !important;
-}
 
 /* ============================================================
-   TOMBOL UTAMA: LOGIN ADMIN (KOTAK PUTIH)
+   TOMBOL UTAMA: LOGIN ADMIN (TRANSPARAN SEPERTI MENU LAINNYA)
    ============================================================ */
 .st-key-sista_sticky_header button[kind="primary"] {
-    background-color: #ffffff !important;
-    color: #0067b9 !important;
-    border: 1px solid #ffffff !important;
-    border-radius: 8px !important;
+    background-color: transparent !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-radius: 7px !important;
     font-size: 13px !important;
-    font-weight: 700 !important;
-    min-height: 88px !important;
-    padding: 5px 12px !important;
+    font-weight: 600 !important;
+    min-height: 40px !important;
+    height: 40px !important;
+    padding: 6px 14px !important;
     box-shadow: none !important;
     position: relative !important;
     z-index: 1;
@@ -303,19 +277,20 @@ button[data-testid="stPopoverButton"] {
 }
 
 .st-key-sista_sticky_header button[kind="primary"] * {
-    color: #0067b9 !important;
+    color: #ffffff !important;
 }
 
 .st-key-sista_sticky_header button[kind="primary"]:hover {
-    background-color: #edf5fc !important;
-    color: #005a9f !important;
-    border-color: #edf5fc !important;
+    background-color: rgba(255, 255, 255, 0.12) !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.7) !important;
 }
 
 .st-key-header_login_button button,
 .st-key-header_logout button {
     width: 100% !important;
-    min-height: 88px !important;
+    min-height: 40px !important;
+    height: 40px !important;
     position: relative !important;
     z-index: 1;
     cursor: pointer !important;
@@ -332,8 +307,8 @@ button[data-testid="stPopoverButton"] {
     > [data-testid="stHorizontalBlock"]
     > [data-testid="stColumn"]:nth-child(3)
     > [data-testid="stVerticalBlock"] {
-        height: 88px !important;
-        min-height: 88px !important;
+        height: auto !important;
+        min-height: 0 !important;
         margin-top: 0 !important;
         margin-bottom: 0 !important;
         gap: 0 !important;
@@ -418,7 +393,25 @@ button[data-testid="stPopoverButton"] {
     > [data-testid="stColumn"]:nth-child(2)
     [data-testid="stPopover"],
     .st-key-sista_sticky_header a[data-testid="stPageLink-NavLink"],
-    .st-key-sista_sticky_header button[data-testid="stPopoverButton"],
+    .st-key-sista_sticky_header button[data-testid="stPopoverButton"] {
+        width: var(--sista-nav-control-width) !important;
+        min-width: var(--sista-nav-control-width) !important;
+        max-width: var(--sista-nav-control-width) !important;
+        height: 88px !important;
+        min-height: 88px !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Tombol search & lokasi lebih kecil dari menu navigasi utama. */
+    .st-key-desktop_search_button button[data-testid="stPopoverButton"],
+    .st-key-desktop_location_button button[data-testid="stPopoverButton"] {
+        height: 40px !important;
+        min-height: 40px !important;
+    }
+
+    /* Tombol login/logout juga lebih kecil. */
     .st-key-header_login_button,
     .st-key-header_logout,
     .st-key-header_login_button button,
@@ -426,8 +419,8 @@ button[data-testid="stPopoverButton"] {
         width: var(--sista-nav-control-width) !important;
         min-width: var(--sista-nav-control-width) !important;
         max-width: var(--sista-nav-control-width) !important;
-        height: 88px !important;
-        min-height: 88px !important;
+        height: 40px !important;
+        min-height: 40px !important;
         margin-top: 0 !important;
         margin-bottom: 0 !important;
         box-sizing: border-box !important;
@@ -511,25 +504,30 @@ div[data-testid="stPopoverBody"] [data-testid="stMarkdownContainer"] p {
     color: #17365d !important;
 }
 
-/* Tombol pencarian dan wilayah pada navbar desktop. */
+/* Tombol pencarian dan wilayah pada navbar desktop — transparan seperti menu lainnya. */
 .st-key-desktop_search_button button[data-testid="stPopoverButton"],
 .st-key-desktop_location_button button[data-testid="stPopoverButton"] {
-    color: #0067b9 !important;
-    background-color: #ffffff !important;
-    border: 1px solid #ffffff !important;
+    color: #ffffff !important;
+    background-color: transparent !important;
+    border: none !important;
     box-shadow: none !important;
+    min-height: 40px !important;
+    height: 40px !important;
+    padding: 6px 10px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    border-radius: 7px !important;
 }
 
 .st-key-desktop_search_button button[data-testid="stPopoverButton"] *,
 .st-key-desktop_location_button button[data-testid="stPopoverButton"] * {
-    color: #0067b9 !important;
+    color: #ffffff !important;
 }
 
 .st-key-desktop_search_button button[data-testid="stPopoverButton"]:hover,
 .st-key-desktop_location_button button[data-testid="stPopoverButton"]:hover {
-    color: #005a9f !important;
-    background-color: #edf5fc !important;
-    border-color: #edf5fc !important;
+    background-color: rgba(255, 255, 255, 0.12) !important;
+    border: none !important;
 }
 
 /* Menu opsi selectbox menggunakan tema terang. Portal ini berada di luar popover. */
@@ -765,9 +763,21 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
     }
 
     .st-key-sista_sticky_header a[data-testid="stPageLink-NavLink"],
-    .st-key-sista_sticky_header button[data-testid="stPopoverButton"],
-    .st-key-sista_sticky_header button[kind="primary"] {
+    .st-key-sista_sticky_header button[data-testid="stPopoverButton"] {
         min-height: 88px !important;
+        white-space: nowrap !important;
+    }
+
+    /* Tombol search, lokasi & login/logout lebih kecil di tablet. */
+    .st-key-desktop_search_button button[data-testid="stPopoverButton"],
+    .st-key-desktop_location_button button[data-testid="stPopoverButton"] {
+        min-height: 40px !important;
+        height: 40px !important;
+    }
+
+    .st-key-sista_sticky_header button[kind="primary"] {
+        min-height: 40px !important;
+        height: 40px !important;
         white-space: nowrap !important;
     }
 
@@ -779,6 +789,8 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
     .st-key-header_login_button button,
     .st-key-header_logout button {
         width: auto !important;
+        height: 40px !important;
+        min-height: 40px !important;
         white-space: nowrap !important;
     }
 
