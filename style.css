@@ -364,12 +364,13 @@ button[data-testid="stPopoverButton"] {
         width: var(--sista-nav-menu-width) !important;
     }
 
+    /* Kolom menu navigasi: 4 menu pertama setinggi 88px, sedangkan kolom 5 (Search) dan 6 (Lokasi) setinggi 40px sejajar dengan Login Admin */
     .st-key-sista_sticky_header
     > [data-testid="stLayoutWrapper"]
     > [data-testid="stHorizontalBlock"]
     > [data-testid="stColumn"]:nth-child(2)
     [data-testid="stHorizontalBlock"]
-    > [data-testid="stColumn"] {
+    > [data-testid="stColumn"]:nth-child(-n+4) {
         width: var(--sista-nav-control-width) !important;
         min-width: var(--sista-nav-control-width) !important;
         height: 88px !important;
@@ -381,19 +382,37 @@ button[data-testid="stPopoverButton"] {
     > [data-testid="stLayoutWrapper"]
     > [data-testid="stHorizontalBlock"]
     > [data-testid="stColumn"]:nth-child(2)
+    [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(-n+4)
     [data-testid="stElementContainer"],
     .st-key-sista_sticky_header
     > [data-testid="stLayoutWrapper"]
     > [data-testid="stHorizontalBlock"]
     > [data-testid="stColumn"]:nth-child(2)
+    [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(-n+4)
     [data-testid="stPageLink"],
     .st-key-sista_sticky_header
     > [data-testid="stLayoutWrapper"]
     > [data-testid="stHorizontalBlock"]
     > [data-testid="stColumn"]:nth-child(2)
+    [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(-n+4)
     [data-testid="stPopover"],
-    .st-key-sista_sticky_header a[data-testid="stPageLink-NavLink"],
-    .st-key-sista_sticky_header button[data-testid="stPopoverButton"] {
+    .st-key-sista_sticky_header
+    > [data-testid="stLayoutWrapper"]
+    > [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(2)
+    [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(-n+4)
+    a[data-testid="stPageLink-NavLink"],
+    .st-key-sista_sticky_header
+    > [data-testid="stLayoutWrapper"]
+    > [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(2)
+    [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(-n+4)
+    button[data-testid="stPopoverButton"] {
         width: var(--sista-nav-control-width) !important;
         min-width: var(--sista-nav-control-width) !important;
         max-width: var(--sista-nav-control-width) !important;
@@ -404,14 +423,63 @@ button[data-testid="stPopoverButton"] {
         box-sizing: border-box !important;
     }
 
-    /* Tombol search & lokasi lebih kecil dari menu navigasi utama. */
-    .st-key-desktop_search_button button[data-testid="stPopoverButton"],
-    .st-key-desktop_location_button button[data-testid="stPopoverButton"] {
+    /* Kolom 5 & 6 (Search & Lokasi) memiliki tinggi dan hitbox yang sama persis dengan Login Admin (40px, bukan 88px) */
+    .st-key-sista_sticky_header
+    > [data-testid="stLayoutWrapper"]
+    > [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(2)
+    [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(5),
+    .st-key-sista_sticky_header
+    > [data-testid="stLayoutWrapper"]
+    > [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(2)
+    [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(6),
+    .st-key-sista_sticky_header
+    > [data-testid="stLayoutWrapper"]
+    > [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(2)
+    [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(5)
+    > [data-testid="stVerticalBlock"],
+    .st-key-sista_sticky_header
+    > [data-testid="stLayoutWrapper"]
+    > [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(2)
+    [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(6)
+    > [data-testid="stVerticalBlock"] {
+        width: var(--sista-nav-control-width) !important;
+        min-width: var(--sista-nav-control-width) !important;
+        max-width: var(--sista-nav-control-width) !important;
         height: 40px !important;
         min-height: 40px !important;
+        max-height: 40px !important;
+        align-self: center !important;
+        justify-content: center !important;
+        margin: 0 !important;
+        flex: none !important;
     }
 
-    /* Tombol login/logout juga lebih kecil. */
+    .st-key-sista_sticky_header .st-key-desktop_search_button,
+    .st-key-sista_sticky_header .st-key-desktop_location_button,
+    .st-key-sista_sticky_header .st-key-desktop_search_button [data-testid="stPopover"],
+    .st-key-sista_sticky_header .st-key-desktop_location_button [data-testid="stPopover"],
+    .st-key-sista_sticky_header .st-key-desktop_search_button button[data-testid="stPopoverButton"],
+    .st-key-sista_sticky_header .st-key-desktop_location_button button[data-testid="stPopoverButton"] {
+        width: var(--sista-nav-control-width) !important;
+        min-width: var(--sista-nav-control-width) !important;
+        max-width: var(--sista-nav-control-width) !important;
+        height: 40px !important;
+        min-height: 40px !important;
+        max-height: 40px !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Tombol login/logout berukuran sama persis dengan tombol search & lokasi */
     .st-key-header_login_button,
     .st-key-header_logout,
     .st-key-header_login_button button,
@@ -421,6 +489,7 @@ button[data-testid="stPopoverButton"] {
         max-width: var(--sista-nav-control-width) !important;
         height: 40px !important;
         min-height: 40px !important;
+        max-height: 40px !important;
         margin-top: 0 !important;
         margin-bottom: 0 !important;
         box-sizing: border-box !important;
@@ -504,30 +573,51 @@ div[data-testid="stPopoverBody"] [data-testid="stMarkdownContainer"] p {
     color: #17365d !important;
 }
 
-/* Tombol pencarian dan wilayah pada navbar desktop — transparan seperti menu lainnya. */
-.st-key-desktop_search_button button[data-testid="stPopoverButton"],
-.st-key-desktop_location_button button[data-testid="stPopoverButton"] {
+/* Tombol pencarian dan wilayah pada navbar desktop — ukuran dan gaya sama persis dengan Login Admin. */
+.st-key-sista_sticky_header .st-key-desktop_search_button,
+.st-key-sista_sticky_header .st-key-desktop_location_button,
+.st-key-sista_sticky_header .st-key-desktop_search_button [data-testid="stPopover"],
+.st-key-sista_sticky_header .st-key-desktop_location_button [data-testid="stPopover"] {
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.st-key-sista_sticky_header .st-key-desktop_search_button button[data-testid="stPopoverButton"],
+.st-key-sista_sticky_header .st-key-desktop_location_button button[data-testid="stPopoverButton"] {
     color: #ffffff !important;
     background-color: transparent !important;
-    border: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    border-radius: 7px !important;
     box-shadow: none !important;
+    width: 100% !important;
     min-height: 40px !important;
+    max-height: 40px !important;
     height: 40px !important;
-    padding: 6px 10px !important;
+    padding: 6px 14px !important;
     font-size: 13px !important;
     font-weight: 600 !important;
-    border-radius: 7px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    z-index: 1 !important;
+    cursor: pointer !important;
+    box-sizing: border-box !important;
 }
 
-.st-key-desktop_search_button button[data-testid="stPopoverButton"] *,
-.st-key-desktop_location_button button[data-testid="stPopoverButton"] * {
+.st-key-sista_sticky_header .st-key-desktop_search_button button[data-testid="stPopoverButton"] *,
+.st-key-sista_sticky_header .st-key-desktop_location_button button[data-testid="stPopoverButton"] * {
     color: #ffffff !important;
 }
 
-.st-key-desktop_search_button button[data-testid="stPopoverButton"]:hover,
-.st-key-desktop_location_button button[data-testid="stPopoverButton"]:hover {
+.st-key-sista_sticky_header .st-key-desktop_search_button button[data-testid="stPopoverButton"]:hover,
+.st-key-sista_sticky_header .st-key-desktop_location_button button[data-testid="stPopoverButton"]:hover {
     background-color: rgba(255, 255, 255, 0.12) !important;
-    border: none !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.7) !important;
 }
 
 /* Menu opsi selectbox menggunakan tema terang. Portal ini berada di luar popover. */
@@ -768,11 +858,17 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
         white-space: nowrap !important;
     }
 
-    /* Tombol search, lokasi & login/logout lebih kecil di tablet. */
-    .st-key-desktop_search_button button[data-testid="stPopoverButton"],
-    .st-key-desktop_location_button button[data-testid="stPopoverButton"] {
+    /* Tombol search, lokasi & login/logout lebih kecil di tablet (40px). */
+    .st-key-sista_sticky_header .st-key-desktop_search_button,
+    .st-key-sista_sticky_header .st-key-desktop_location_button,
+    .st-key-sista_sticky_header .st-key-desktop_search_button [data-testid="stPopover"],
+    .st-key-sista_sticky_header .st-key-desktop_location_button [data-testid="stPopover"],
+    .st-key-sista_sticky_header .st-key-desktop_search_button button[data-testid="stPopoverButton"],
+    .st-key-sista_sticky_header .st-key-desktop_location_button button[data-testid="stPopoverButton"] {
         min-height: 40px !important;
+        max-height: 40px !important;
         height: 40px !important;
+        align-self: center !important;
     }
 
     .st-key-sista_sticky_header button[kind="primary"] {
@@ -813,9 +909,9 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
 }
 
 /* ============================================================
-   SMARTPHONE
+   SMARTPHONE / MOBILE (LAYAR KECIL <= 768px)
    ============================================================ */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .st-key-sista_sticky_header {
         padding: 8px 12px 10px !important;
     }
@@ -827,7 +923,30 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
         padding-bottom: 36px !important;
     }
 
-    /* Navbar desktop disembunyikan dan diganti tombol hamburger. */
+    /* Header baris tunggal di mobile: Brand di kiri, tombol aksi di kanan */
+    .st-key-sista_sticky_header
+    > [data-testid="stLayoutWrapper"]
+    > [data-testid="stHorizontalBlock"] {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 8px !important;
+    }
+
+    .st-key-sista_sticky_header
+    > [data-testid="stLayoutWrapper"]
+    > [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(1) {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        max-width: calc(100% - 106px) !important;
+        overflow: hidden !important;
+    }
+
+    /* Navbar desktop disembunyikan dan diganti tombol hamburger di mobile */
     .st-key-sista_sticky_header
     > [data-testid="stLayoutWrapper"]
     > [data-testid="stHorizontalBlock"]
@@ -837,62 +956,123 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
         display: none !important;
     }
 
+    .st-key-sista_sticky_header
+    > [data-testid="stLayoutWrapper"]
+    > [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(3) {
+        flex: 0 0 96px !important;
+        width: 96px !important;
+        min-width: 96px !important;
+        max-width: 96px !important;
+        height: 40px !important;
+        align-self: center !important;
+    }
+
+    .st-key-sista_sticky_header
+    > [data-testid="stLayoutWrapper"]
+    > [data-testid="stHorizontalBlock"]
+    > [data-testid="stColumn"]:nth-child(3)
+    > [data-testid="stVerticalBlock"] {
+        height: 40px !important;
+        gap: 0 !important;
+        justify-content: center !important;
+        align-items: flex-end !important;
+    }
+
+    /* Container aksi mobile: 2 tombol (Cari & Menu Hamburger) berdampingan rapi */
     .st-key-mobile_header_actions {
         display: flex !important;
+        flex-direction: row !important;
         flex-wrap: nowrap !important;
         align-items: center !important;
+        justify-content: flex-end !important;
         gap: 8px !important;
         width: 96px !important;
         min-width: 96px !important;
+        max-width: 96px !important;
+        height: 40px !important;
+        min-height: 40px !important;
+        max-height: 40px !important;
+        pointer-events: auto !important;
     }
 
-    .st-key-mobile_search_button,
-    .st-key-mobile_menu_open {
-        display: block !important;
+    /* Kolom internal Streamlit st.container(horizontal=True) harus berukuran pasti 44px */
+    .st-key-mobile_header_actions [data-testid="stColumn"] {
         width: 44px !important;
         min-width: 44px !important;
-        min-height: 88px !important;
-        position: relative !important;
-        z-index: 1;
+        max-width: 44px !important;
+        height: 40px !important;
+        min-height: 40px !important;
+        max-height: 40px !important;
+        flex: 0 0 44px !important;
+        padding: 0 !important;
+        margin: 0 !important;
     }
 
-    .st-key-mobile_search_button > button,
+    .st-key-mobile_header_actions [data-testid="stElementContainer"],
+    .st-key-mobile_header_actions [data-testid="stVerticalBlock"],
+    .st-key-mobile_header_actions [data-testid="stPopover"],
+    .st-key-mobile_header_actions [data-testid="stButton"],
+    .st-key-mobile_search_button,
+    .st-key-mobile_menu_open {
+        width: 44px !important;
+        min-width: 44px !important;
+        max-width: 44px !important;
+        height: 40px !important;
+        min-height: 40px !important;
+        max-height: 40px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        overflow: visible !important;
+    }
+
+    /* Hitbox tombol mobile pasti 44x40px, mudah ditekan dengan sentuhan */
     .st-key-mobile_search_button button[data-testid="stPopoverButton"],
     .st-key-mobile_menu_open button {
         width: 44px !important;
         min-width: 44px !important;
-        min-height: 88px !important;
+        max-width: 44px !important;
+        height: 40px !important;
+        min-height: 40px !important;
+        max-height: 40px !important;
         padding: 0 !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
         color: #ffffff !important;
         background: transparent !important;
         border: 1px solid rgba(255, 255, 255, 0.45) !important;
         border-radius: 8px !important;
         box-shadow: none !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
         position: relative !important;
-        z-index: 2;
+        z-index: 2 !important;
         cursor: pointer !important;
+        pointer-events: auto !important;
+        touch-action: manipulation !important;
     }
 
-    .st-key-mobile_search_button > button:hover,
     .st-key-mobile_search_button button[data-testid="stPopoverButton"]:hover,
     .st-key-mobile_menu_open button:hover {
         background: rgba(255, 255, 255, 0.12) !important;
         border-color: #ffffff !important;
     }
 
-    .st-key-mobile_search_button > button p,
     .st-key-mobile_search_button button[data-testid="stPopoverButton"] p,
     .st-key-mobile_menu_open button p {
         display: none !important;
     }
 
-    .st-key-mobile_search_button > button *,
     .st-key-mobile_search_button button[data-testid="stPopoverButton"] *,
     .st-key-mobile_menu_open button * {
         color: #ffffff !important;
+        font-size: 20px !important;
     }
 
-    .st-key-mobile_search_button button[data-testid="stPopoverButton"] svg {
+    /* Sembunyikan panah dropdown popover agar hanya ikon kaca pembesar yang tampil */
+    .st-key-mobile_search_button button[data-testid="stPopoverButton"] svg:not([data-testid="stIconMaterial"]) {
         display: none !important;
     }
 
@@ -1243,7 +1423,7 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
     }
 
     .st-key-sista_sticky_header a[data-testid="stPageLink-NavLink"],
-    .st-key-sista_sticky_header button[data-testid="stPopoverButton"],
+    .st-key-sista_sticky_header:not(:has(.st-key-mobile_search_button)) button[data-testid="stPopoverButton"]:not(.st-key-mobile_search_button button),
     .st-key-sista_sticky_header button[kind="primary"] {
         font-size: 11px !important;
         padding: 7px 8px !important;
