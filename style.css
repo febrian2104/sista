@@ -57,6 +57,11 @@ body,
 header[data-testid="stHeader"] {
     background: transparent !important;
     height: 0 !important;
+    pointer-events: none !important;
+}
+
+header[data-testid="stHeader"] * {
+    pointer-events: none !important;
 }
 
 header[data-testid="stHeader"] > div {
@@ -959,24 +964,31 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
     .st-key-sista_sticky_header
     > [data-testid="stLayoutWrapper"]
     > [data-testid="stHorizontalBlock"]
-    > [data-testid="stColumn"]:nth-child(3) {
-        flex: 0 0 96px !important;
-        width: 96px !important;
-        min-width: 96px !important;
-        max-width: 96px !important;
-        height: 40px !important;
+    > [data-testid="stColumn"]:nth-child(3),
+    .st-key-sista_sticky_header [data-testid="stColumn"]:has(.st-key-mobile_header_actions) {
+        flex: 0 0 100px !important;
+        width: 100px !important;
+        min-width: 100px !important;
+        max-width: 100px !important;
+        height: 42px !important;
+        min-height: 42px !important;
         align-self: center !important;
+        position: relative !important;
+        z-index: 1001 !important;
     }
 
     .st-key-sista_sticky_header
     > [data-testid="stLayoutWrapper"]
     > [data-testid="stHorizontalBlock"]
     > [data-testid="stColumn"]:nth-child(3)
-    > [data-testid="stVerticalBlock"] {
-        height: 40px !important;
+    > [data-testid="stVerticalBlock"],
+    .st-key-sista_sticky_header [data-testid="stColumn"]:has(.st-key-mobile_header_actions) > [data-testid="stVerticalBlock"] {
+        height: 42px !important;
+        min-height: 42px !important;
         gap: 0 !important;
         justify-content: center !important;
         align-items: flex-end !important;
+        overflow: visible !important;
     }
 
     /* Container aksi mobile: 2 tombol (Cari & Menu Hamburger) berdampingan rapi */
@@ -987,26 +999,30 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
         align-items: center !important;
         justify-content: flex-end !important;
         gap: 8px !important;
-        width: 96px !important;
-        min-width: 96px !important;
-        max-width: 96px !important;
-        height: 40px !important;
-        min-height: 40px !important;
-        max-height: 40px !important;
+        width: 100px !important;
+        min-width: 100px !important;
+        max-width: 100px !important;
+        height: 42px !important;
+        min-height: 42px !important;
+        max-height: 42px !important;
+        position: relative !important;
+        z-index: 1002 !important;
         pointer-events: auto !important;
+        overflow: visible !important;
     }
 
-    /* Kolom internal Streamlit st.container(horizontal=True) harus berukuran pasti 44px */
+    /* Kolom internal Streamlit st.container(horizontal=True) berukuran pas */
     .st-key-mobile_header_actions [data-testid="stColumn"] {
-        width: 44px !important;
-        min-width: 44px !important;
-        max-width: 44px !important;
-        height: 40px !important;
-        min-height: 40px !important;
-        max-height: 40px !important;
-        flex: 0 0 44px !important;
+        width: 46px !important;
+        min-width: 46px !important;
+        max-width: 46px !important;
+        height: 42px !important;
+        min-height: 42px !important;
+        max-height: 42px !important;
+        flex: 0 0 46px !important;
         padding: 0 !important;
         margin: 0 !important;
+        overflow: visible !important;
     }
 
     .st-key-mobile_header_actions [data-testid="stElementContainer"],
@@ -1015,64 +1031,70 @@ div[data-testid="stPopoverBody"] [data-testid="stVerticalBlock"] {
     .st-key-mobile_header_actions [data-testid="stButton"],
     .st-key-mobile_search_button,
     .st-key-mobile_menu_open {
-        width: 44px !important;
-        min-width: 44px !important;
-        max-width: 44px !important;
-        height: 40px !important;
-        min-height: 40px !important;
-        max-height: 40px !important;
+        width: 46px !important;
+        min-width: 46px !important;
+        max-width: 46px !important;
+        height: 42px !important;
+        min-height: 42px !important;
+        max-height: 42px !important;
         padding: 0 !important;
         margin: 0 !important;
         box-sizing: border-box !important;
         overflow: visible !important;
     }
 
-    /* Hitbox tombol mobile pasti 44x40px, mudah ditekan dengan sentuhan */
-    .st-key-mobile_search_button button[data-testid="stPopoverButton"],
+    /* Hitbox tombol mobile pasti 46x42px, mudah ditekan dengan sentuhan */
+    .st-key-mobile_search_button button,
     .st-key-mobile_menu_open button {
-        width: 44px !important;
-        min-width: 44px !important;
-        max-width: 44px !important;
-        height: 40px !important;
-        min-height: 40px !important;
-        max-height: 40px !important;
+        width: 46px !important;
+        min-width: 46px !important;
+        max-width: 46px !important;
+        height: 42px !important;
+        min-height: 42px !important;
+        max-height: 42px !important;
         padding: 0 !important;
         margin: 0 !important;
         box-sizing: border-box !important;
         color: #ffffff !important;
         background: transparent !important;
-        border: 1px solid rgba(255, 255, 255, 0.45) !important;
+        border: 1px solid rgba(255, 255, 255, 0.5) !important;
         border-radius: 8px !important;
         box-shadow: none !important;
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
         position: relative !important;
-        z-index: 2 !important;
+        z-index: 1005 !important;
         cursor: pointer !important;
         pointer-events: auto !important;
         touch-action: manipulation !important;
+        -webkit-tap-highlight-color: transparent !important;
     }
 
-    .st-key-mobile_search_button button[data-testid="stPopoverButton"]:hover,
-    .st-key-mobile_menu_open button:hover {
-        background: rgba(255, 255, 255, 0.12) !important;
+    .st-key-mobile_search_button button:hover,
+    .st-key-mobile_search_button button:active,
+    .st-key-mobile_menu_open button:hover,
+    .st-key-mobile_menu_open button:active {
+        background: rgba(255, 255, 255, 0.18) !important;
         border-color: #ffffff !important;
     }
 
-    .st-key-mobile_search_button button[data-testid="stPopoverButton"] p,
+    .st-key-mobile_search_button button p,
     .st-key-mobile_menu_open button p {
         display: none !important;
     }
 
-    .st-key-mobile_search_button button[data-testid="stPopoverButton"] *,
+    /* Pastikan event sentuhan/klik langsung mengenai elemen button, bukan tertelan oleh icon span di dalamnya */
+    .st-key-mobile_search_button button *,
     .st-key-mobile_menu_open button * {
+        pointer-events: none !important;
         color: #ffffff !important;
-        font-size: 20px !important;
+        font-size: 22px !important;
+        line-height: 1 !important;
     }
 
     /* Sembunyikan panah dropdown popover agar hanya ikon kaca pembesar yang tampil */
-    .st-key-mobile_search_button button[data-testid="stPopoverButton"] svg:not([data-testid="stIconMaterial"]) {
+    .st-key-mobile_search_button button svg:not([data-testid="stIconMaterial"]) {
         display: none !important;
     }
 

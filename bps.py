@@ -367,7 +367,8 @@ with header_container:
                 "Cari",
                 icon=":material/search:",
                 key="mobile_search_button",
-                help="Cari dokumen"
+                help="Cari dokumen",
+                use_container_width=True
             ):
 
                 st.text_input(
